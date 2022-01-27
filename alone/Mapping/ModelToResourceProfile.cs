@@ -1,4 +1,6 @@
 ﻿using alone.Domin;
+using alone.Extensions;
+using alone.Resources;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,9 @@ namespace alone.Mapping
         public ModelToResourceProfile()
         {
             CreateMap<Category, CategoriesResponse>();
+            CreateMap<Product, ProductResource>()
+               .ForMember(src => src.UnitOfMeasurement,
+                          opt => opt.MapFrom(src => src.UnitOfMeasurement.ToDescriptionString()));
         }
     }
 }
