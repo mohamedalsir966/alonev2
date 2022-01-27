@@ -47,6 +47,8 @@ namespace alone
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SupermarketConnecionString")));
             services.AddScoped<ICategoryRepositories, CategoryRepository>();
             services.AddScoped<IcategoryServices, CatogryServices>();
+            services.AddScoped<IproductRepositories, ProductRepository>();
+            services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper(GetType().Assembly, typeof(Mapping.ModelToResourceProfile).Assembly);
             services.AddSwaggerGen();
