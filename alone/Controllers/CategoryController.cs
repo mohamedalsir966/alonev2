@@ -16,6 +16,7 @@ namespace alone.Controllers
     [Route("[controller]")]
     public class CategoryController : ControllerBase
     {
+        //to see update in master
         private readonly IcategoryServices _categoryService;
         private readonly IMapper _mapper;
 
