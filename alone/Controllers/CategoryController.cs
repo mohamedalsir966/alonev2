@@ -16,6 +16,7 @@ namespace alone.Controllers
     [Route("[controller]")]
     public class CategoryController : ControllerBase
     {
+
         private readonly IcategoryServices _categoryService;
         private readonly IMapper _mapper;
 
