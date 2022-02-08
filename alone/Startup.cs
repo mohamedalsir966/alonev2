@@ -23,6 +23,7 @@ using FluentValidation;
 using alone.Persistence.Contexts;
 using alone.Registrations;
 using alone.Middlewares;
+using alone.Cacheding;
 
 namespace alone
 {
@@ -50,8 +51,15 @@ namespace alone
             services.AddScoped<IproductRepositories, ProductRepository>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddDistributedRedisCache(o =>
+            {
+                o.Configuration = Configuration.GetValue<string>("Redis:ConnectionString");
+            });
+
+            services.AddScoped<CacheService>();
             services.AddAutoMapper(GetType().Assembly, typeof(Mapping.ModelToResourceProfile).Assembly);
             services.AddSwaggerGen();
+            
             //services.AddExceptionHandler();
 
         }
